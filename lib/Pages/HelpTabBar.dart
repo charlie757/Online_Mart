@@ -11,20 +11,6 @@ class HelpTabBar extends StatefulWidget {
 class _HelpTabBarState extends State<HelpTabBar> {
   final Stream<QuerySnapshot> _usersStream =
       FirebaseFirestore.instance.collection('Shoes').snapshots();
-  @override
-  void initState() {
-    FirebaseFirestore.instance
-        .collection('Shoes')
-        .doc('ZZn4fifwNu49PybKbEMe')
-        .get()
-        .then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        print('Document data: ${documentSnapshot.data()}');
-      } else {
-        print('Document does not exist on the database');
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

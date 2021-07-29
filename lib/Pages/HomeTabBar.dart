@@ -28,35 +28,36 @@ class _HomeTabBarState extends State<HomeTabBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: StreamBuilder(
-            stream: FirebaseFirestore.instance
-                .collection('Shoes')
-                .doc()
-                .snapshots(),
-            builder: (context, snapshot) {
-              return ListView.builder(
-                  itemCount: snapshot.data.toString().length,
-                  itemBuilder: (context, index) {
-                    DocumentSnapshot shoes = snapshot.data();
-                    return ListTile(
-                      // leading: Image.network(shoes['img']),
-                      title: Text(shoes['brand']),
-                    );
-                  });
-            }));
-  }
+        // body: StreamBuilder(
+        //     stream: FirebaseFirestore.instance
+        //         .collection('Shoes')
+        //         .doc()
+        //         .snapshots(),
+        //     builder: (context, snapshot) {
+        //       return ListView.builder(
+        //           itemCount: snapshot.data.toString().length,
+        //           itemBuilder: (context, index) {
+        //             DocumentSnapshot shoes = snapshot.data();
+        //             return ListTile(
+        //               // leading: Image.network(shoes['img']),
+        //               title: Text(shoes['brand']),
+        //             );
+        //           });
+        //     }));
 
-  // Widget _shoesList() {
-  //   if (_shoes != null) {
-  //     return ListView.builder(
-  //         itemCount: _shoes.docs.length,
-  //         itemBuilder: (context, index) {
-  //           return ListTile(
-  //             title: Text(_shoes.docs[index].get('price')),
-  //           );
-  //         });
-  //   } else {
-  //     return Text("Loding, Please Wait....");
-  //   }
-  // }
+        // Widget _shoesList() {
+        //   if (_shoes != null) {
+        //     return ListView.builder(
+        //         itemCount: _shoes.docs.length,
+        //         itemBuilder: (context, index) {
+        //           return ListTile(
+        //             title: Text(_shoes.docs[index].get('price')),
+        //           );
+        //         });
+        //   } else {
+        //     return Text("Loding, Please Wait....");
+        //   }
+        // }
+        );
+  }
 }
