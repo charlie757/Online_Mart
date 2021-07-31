@@ -27,7 +27,7 @@ class _SplshScreenState extends State<SplshScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: grey,
+      backgroundColor: lightpurple2,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

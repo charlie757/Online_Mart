@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:online_mart/Pages/HomeTabBar/HomeTabBar.dart';
 import 'package:online_mart/Pages/OrdersTabBar.dart';
 import 'package:online_mart/Pages/ProfileTabBar.dart';
 
-import 'Pages/AllCategories.dart';
+import 'InternetConnectivity/ConnectivtyProvider.dart';
 import 'Pages/HelpTabBar.dart';
-import 'Pages/HomeTabBar.dart';
 import 'Pages/Searchbar/SearchBarpage.dart';
 import 'Utils/Constrains.dart';
 import 'Widget/Drawer.dart';
+import 'package:online_mart/Pages/AllCategrorieseTabBar/AllCategories.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key, this.appbar}) : super(key: key);

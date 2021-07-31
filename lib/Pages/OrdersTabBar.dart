@@ -10,30 +10,29 @@ class OrdersTabBar extends StatefulWidget {
 }
 
 class _OrdersTabBarState extends State<OrdersTabBar> {
+  final Stream<QuerySnapshot> users =
+      FirebaseFirestore.instance.collection('Shoes').snapshots();
+
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('Shoes');
-
-    return FutureBuilder<DocumentSnapshot>(
-      future: users.doc('ZZn4fifwNu49PybKbEMe').get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+    return Scaffold(
+        body: StreamBuilder<QuerySnapshot>(
+      stream: users,
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text("Something went wrong");
+          return Text("Somthing went Wrong");
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text("Loading...");
         }
-
-        if (snapshot.hasData && !snapshot.data.exists) {
-          return Text("Document does not exist");
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data =
-              snapshot.data.data() as Map<String, dynamic>;
-          return ListTile(title: Text(data['brand']));
-        }
-
-        return Text("loading");
+        final data = snapshot.requireData;
+        return ListView.builder(
+            itemCount: data.docs.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                  title: Text(data.docs[index]['brand']),
+                  leading: Image.network(data.docs[index]['img']));
+            });
       },
-    );
+    ));
   }
 }
