@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:online_mart/HomePage.dart';
 import 'package:online_mart/Pages/Auth/AuthWithGoogle/GoogleAuth.dart';
 import 'package:online_mart/Pages/Auth/AuthWithPhone/PhoneAuth.dart';
 import 'package:provider/provider.dart';
@@ -111,6 +112,19 @@ class _LoginPageState extends State<LoginPage> {
               provider.googleLoginIn();
             },
           ),
+          SizedBox(height: 20),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blueAccent,
+              ),
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
+              },
+              child: Text(
+                "Skip",
+                style: TextStyle(fontSize: 16),
+              )),
         ]));
   }
 }

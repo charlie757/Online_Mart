@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:online_mart/Pages/AllCategrorieseTabBar/AllCategories.dart';
 
 class TitlePage extends StatefulWidget {
   const TitlePage({Key key}) : super(key: key);
@@ -24,32 +25,44 @@ class _TitlePageState extends State<TitlePage> {
           return Text("Loading...");
         }
         final data = snapshot.requireData;
-        return ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: data.docs.length,
-            itemBuilder: (context, index) {
-              return Container(
-                  // height: 40,
-                  margin: EdgeInsets.only(left: 5),
-                  width: 75,
-                  // color: Colors.yellow,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                          radius: 20,
-                          backgroundImage:
-                              NetworkImage(data.docs[index]['img'])),
-                      Text(
-                        data.docs[index]['title'],
-                        textAlign: TextAlign.start,
-                        style: TextStyle(fontSize: 11),
-                      )
-                    ],
-                  ));
-            });
+        return ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            inkwell(context, 'assets/images/image1.png', 'Categories',
+                AllCategroiesPage()),
+            inkwell(context, 'assets/images/image2.jpg', 'Grocery', 'route'),
+            inkwell(context, 'assets/images/image3.jpg', 'Fashion', 'route'),
+            inkwell(context, 'assets/images/image4.png', 'Fruits&Veg', 'route'),
+            inkwell(
+                context, 'assets/images/image5.png', 'Home&Kitchen', 'route'),
+          ],
+        );
       },
     ));
+  }
+
+  InkWell inkwell(BuildContext context, String img, String title, route) {
+    return InkWell(
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => route));
+        },
+        child: Container(
+            // height: 40,
+            margin: EdgeInsets.only(left: 5),
+            width: 75,
+            // color: Colors.yellow,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(radius: 20, backgroundImage: AssetImage(img)),
+                Text(
+                  title,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(fontSize: 11),
+                )
+              ],
+            )));
   }
 }

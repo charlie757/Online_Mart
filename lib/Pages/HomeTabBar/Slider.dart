@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:online_mart/Pages/HomeTabBar/SliderDetailsPage.dart';
 
 class SliderPage extends StatefulWidget {
   const SliderPage({Key key}) : super(key: key);
@@ -26,25 +27,31 @@ class _SliderPageState extends State<SliderPage> {
           return Text("Loading...");
         }
         final data = snapshot.requireData;
-        return CarouselSlider.builder(
-            itemCount: data.docs.length,
-            carouselController: buttonCarouselController,
-            itemBuilder: (BuildContext context, int index, int pageViewIndex) {
-              return Image.network(data.docs[index]['img']);
+        return GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SliderDetailsPage()));
             },
-            options: CarouselOptions(
-              // autoPlayAnimationDuration: Duration(seconds: 2),
-              pageSnapping: true,
-              pauseAutoPlayInFiniteScroll: true,
-              autoPlay: true,
-              scrollDirection: Axis.horizontal,
-              viewportFraction: 0.9,
-              aspectRatio: 2.0,
-              // pauseAutoPlayOnTouch: true,
-              enlargeCenterPage: true,
-              autoPlayCurve: Curves.easeInSine,
-              height: 250,
-            ));
+            child: CarouselSlider.builder(
+                itemCount: data.docs.length,
+                carouselController: buttonCarouselController,
+                itemBuilder:
+                    (BuildContext context, int index, int pageViewIndex) {
+                  return Image.network(data.docs[index]['img']);
+                },
+                options: CarouselOptions(
+                  // autoPlayAnimationDuration: Duration(seconds: 2),
+                  pageSnapping: true,
+                  pauseAutoPlayInFiniteScroll: true,
+                  autoPlay: true,
+                  scrollDirection: Axis.horizontal,
+                  viewportFraction: 0.9,
+                  aspectRatio: 2.0,
+                  // pauseAutoPlayOnTouch: true,
+                  enlargeCenterPage: true,
+                  autoPlayCurve: Curves.easeInSine,
+                  height: 250,
+                )));
       },
     ));
   }
