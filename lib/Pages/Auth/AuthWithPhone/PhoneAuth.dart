@@ -89,7 +89,7 @@ class _PhoneAuthState extends State<PhoneAuth> {
                     style: TextStyle(
                         fontFamily: GoogleFonts.alegreya().fontFamily,
                         fontSize: 18.0)),
-                Text("+91 9782******09",
+                Text("+91 97********09",
                     style: TextStyle(
                         fontFamily: GoogleFonts.alegreya().fontFamily,
                         fontSize: 18.0)),

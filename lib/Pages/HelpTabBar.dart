@@ -13,30 +13,6 @@ class HelpTabBar extends StatefulWidget {
 }
 
 class _HelpTabBarState extends State<HelpTabBar> {
-  var subscription;
-  var status = 'offline';
-  void initState() {
-    super.initState();
-    subscription = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      if (result == ConnectivityResult.none) {
-        setState(() {
-          status = "offline";
-        });
-      } else {
-        setState(() {
-          status = "online";
-        });
-      }
-    });
-  }
-
-  void dispose() {
-    super.dispose();
-    subscription.cancel();
-  }
-
   final Stream<QuerySnapshot> users =
       FirebaseFirestore.instance.collection('SliderImage').snapshots();
 
@@ -59,36 +35,28 @@ class _HelpTabBarState extends State<HelpTabBar> {
           //   color: status == 'offline' ? Colors.grey : Colors.green,
           //   child: Text(status),
           // ),
-          status == 'offline'
-              ? Container(
-                  height: height,
-                  width: width,
-                  child: Text(
-                    "Please Check the Internet",
-                    style: TextStyle(fontSize: 20),
-                  ))
-              : Container(
-                  height: 200,
-                  child: CarouselSlider.builder(
-                      itemCount: data.docs.length,
-                      itemBuilder:
-                          (BuildContext context, int index, int pageViewIndex) {
-                        return Image.network(
-                          data.docs[index]['img'],
-                          height: 250,
-                          // width: 250,
-                        );
-                      },
-                      options: CarouselOptions(
-                        // autoPlayAnimationDuration: Duration(seconds:),
-                        pageSnapping: true,
-                        // pauseAutoPlayInFiniteScroll: true,
-                        autoPlay: true,
-                        viewportFraction: 0.9,
-                        aspectRatio: 2.0,
-                        scrollDirection: Axis.horizontal,
-                        height: 200,
-                      )))
+          Container(
+              height: 200,
+              child: CarouselSlider.builder(
+                  itemCount: data.docs.length,
+                  itemBuilder:
+                      (BuildContext context, int index, int pageViewIndex) {
+                    return Image.network(
+                      data.docs[index]['img'],
+                      height: 250,
+                      // width: 250,
+                    );
+                  },
+                  options: CarouselOptions(
+                    // autoPlayAnimationDuration: Duration(seconds:),
+                    pageSnapping: true,
+                    // pauseAutoPlayInFiniteScroll: true,
+                    autoPlay: true,
+                    viewportFraction: 0.9,
+                    aspectRatio: 2.0,
+                    scrollDirection: Axis.horizontal,
+                    height: 200,
+                  )))
         ]);
       },
     ));

@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:online_mart/Pages/AllCategrorieseTabBar/AllCategories.dart';
+import 'package:online_mart/Pages/FashionProduct/AllFashonProduct.dart';
+import 'package:online_mart/Pages/GroceryProduct/GroceryProduct.dart';
 
 class TitlePage extends StatefulWidget {
   const TitlePage({Key key}) : super(key: key);
@@ -30,8 +32,10 @@ class _TitlePageState extends State<TitlePage> {
           children: [
             inkwell(context, 'assets/images/image1.png', 'Categories',
                 AllCategroiesPage()),
-            inkwell(context, 'assets/images/image2.jpg', 'Grocery', 'route'),
-            inkwell(context, 'assets/images/image3.jpg', 'Fashion', 'route'),
+            inkwell(context, 'assets/images/image2.jpg', 'Grocery',
+                GroceryProductPage()),
+            inkwell(
+                context, 'assets/images/image3.jpg', 'Fashion', AllFashion()),
             inkwell(context, 'assets/images/image4.png', 'Fruits&Veg', 'route'),
             inkwell(
                 context, 'assets/images/image5.png', 'Home&Kitchen', 'route'),

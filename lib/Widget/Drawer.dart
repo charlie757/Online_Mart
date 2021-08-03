@@ -94,6 +94,8 @@ class _DrawerPageState extends State<DrawerPage> {
                   onTap: () {},
                   title: Text("Guide"),
                 ),
+                ListTile(onTap: () {}, title: Text("CRUD")),
+
                 ListTile(
                   onTap: () {
                     final provider = Provider.of<GoogleSignInProvider>(context,

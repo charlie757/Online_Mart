@@ -37,8 +37,11 @@ dependencies:
   shared_preferences: ^2.0.6
   otp_text_field: ^1.1.1
   
-  cloud_firestore:
-  firebase_database: ^7.1.2
+  cloud_firestore: 
+  # firebase_database: ^7.1.2
+
+  # firebase_storage:
+  file_picker: ^3.0.4
 
   #for Google Icon
   font_awesome_flutter: ^9.1.0
@@ -50,6 +53,8 @@ dependencies:
   connectivity_plus: ^1.0.4
   
   internet_connection_checker: ^0.0.1+2
+  number_inc_dec: ^0.7.0
+  expandable: ^5.0.1
 
 
 

@@ -1,49 +1,36 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class GroceryProductPage extends StatefulWidget {
-  const GroceryProductPage({Key key}) : super(key: key);
+class GirlsProduct extends StatefulWidget {
+  const GirlsProduct({Key key}) : super(key: key);
 
   @override
-  _GroceryProductPageState createState() => _GroceryProductPageState();
+  _GirlsProductState createState() => _GirlsProductState();
 }
 
-class _GroceryProductPageState extends State<GroceryProductPage> {
+class _GirlsProductState extends State<GirlsProduct> {
   final Stream<QuerySnapshot> users =
-      FirebaseFirestore.instance.collection('Grocery').snapshots();
+      FirebaseFirestore.instance.collection('GirlsClothes').snapshots();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Online-Mart"),
-          actions: [
-            IconButton(
-                splashRadius: 20,
-                icon: Icon(Icons.notifications),
-                onPressed: () {}),
-            IconButton(
-                splashRadius: 20,
-                icon: Icon(Icons.shopping_cart),
-                onPressed: () {}),
-          ],
-        ),
         body: StreamBuilder<QuerySnapshot>(
-          stream: users,
-          builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.hasError) {
-              return Text("Somthing went Wrong");
-            } else if (snapshot.connectionState == ConnectionState.waiting) {
-              return Text("Loading...");
-            }
-            final data = snapshot.requireData;
-            return InkWell(
-                child: ListView.builder(
-              itemCount: data.docs.length,
-              shrinkWrap: true,
-              itemBuilder: (BuildContext context, index) {
-                return Card(
+      stream: users,
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text("Somthing went Wrong");
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text("Loading...");
+        }
+        final data = snapshot.requireData;
+        return InkWell(
+            child: ListView.builder(
+          itemCount: data.docs.length,
+          itemBuilder: (BuildContext context, index) {
+            return Padding(
+                padding: EdgeInsets.only(),
+                child: Card(
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,10 +69,10 @@ class _GroceryProductPageState extends State<GroceryProductPage> {
                       ),
                     ],
                   ),
-                );
-              },
-            ));
+                ));
           },
         ));
+      },
+    ));
   }
 }

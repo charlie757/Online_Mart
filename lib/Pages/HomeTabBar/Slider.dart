@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:online_mart/Pages/HomeTabBar/SliderDetailsPage.dart';
+
+import 'SliderImageScreen.dart';
 
 class SliderPage extends StatefulWidget {
   const SliderPage({Key key}) : super(key: key);
@@ -14,6 +15,8 @@ class _SliderPageState extends State<SliderPage> {
   CarouselController buttonCarouselController = CarouselController();
   final Stream<QuerySnapshot> users =
       FirebaseFirestore.instance.collection('SliderImage').snapshots();
+
+  get index => null;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +32,11 @@ class _SliderPageState extends State<SliderPage> {
         final data = snapshot.requireData;
         return GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SliderDetailsPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ImageScreen(data.docs[index]['img'])));
             },
             child: CarouselSlider.builder(
                 itemCount: data.docs.length,
