@@ -16,7 +16,6 @@ class _SliderPageState extends State<SliderPage> {
   final Stream<QuerySnapshot> users =
       FirebaseFirestore.instance.collection('SliderImage').snapshots();
 
-  get index => null;
 
   @override
   Widget build(BuildContext context) {
@@ -30,34 +29,34 @@ class _SliderPageState extends State<SliderPage> {
           return Text("Loading...");
         }
         final data = snapshot.requireData;
-        return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          ImageScreen(data.docs[index]['img'])));
+        return CarouselSlider.builder(
+            itemCount: data.docs.length,
+            carouselController: buttonCarouselController,
+            itemBuilder: (BuildContext context, int index, int pageViewIndex) {
+              return GestureDetector(
+                  child: Image.network(data.docs[index]['img']),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ImageScreen(data.docs[index]['img'])));
+                  });
             },
-            child: CarouselSlider.builder(
-                itemCount: data.docs.length,
-                carouselController: buttonCarouselController,
-                itemBuilder:
-                    (BuildContext context, int index, int pageViewIndex) {
-                  return Image.network(data.docs[index]['img']);
-                },
-                options: CarouselOptions(
-                  // autoPlayAnimationDuration: Duration(seconds: 2),
-                  pageSnapping: true,
-                  pauseAutoPlayInFiniteScroll: true,
-                  autoPlay: true,
-                  scrollDirection: Axis.horizontal,
-                  viewportFraction: 0.9,
-                  aspectRatio: 2.0,
-                  // pauseAutoPlayOnTouch: true,
-                  enlargeCenterPage: true,
-                  autoPlayCurve: Curves.easeInSine,
-                  height: 250,
-                )));
+            options: CarouselOptions(
+              // autoPlayAnimationDuration: Duration(seconds: 2),
+              pageSnapping: true,
+              pauseAutoPlayInFiniteScroll: true,
+              autoPlay: true,
+              scrollDirection: Axis.horizontal,
+              viewportFraction: 0.9,
+              aspectRatio: 2.0,
+              // pauseAutoPlayOnTouch: true,
+              enlargeCenterPage: true,
+              autoPlayCurve: Curves.easeInSine,
+              height: 250,
+            ));
+
       },
     ));
   }

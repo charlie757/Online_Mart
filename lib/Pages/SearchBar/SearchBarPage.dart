@@ -41,7 +41,10 @@ class _SearchBarPageState extends State<SearchBarPage> {
                                     filled: true,
                                     hintText: "Search Products & brands",
                                     isDense: true,
-                                    border: OutlineInputBorder())))
+                                    // enabledBorder: InputBorder.none,
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10))))))
                       ])),
                 ))),
         body: Padding(padding: EdgeInsets.only()));

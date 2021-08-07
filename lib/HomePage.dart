@@ -4,7 +4,7 @@ import 'package:online_mart/Pages/HomeTabBar/HomeTabBar.dart';
 import 'package:online_mart/Pages/OrdersTabBar.dart';
 import 'package:online_mart/Pages/ProfileTabBar.dart';
 
-import 'Pages/HelpTabBar.dart';
+import 'Pages/HelpTabBarWidget/HelpTabBar.dart';
 import 'Pages/Searchbar/SearchBarpage.dart';
 import 'Utils/Constrains.dart';
 import 'Widget/Drawer.dart';

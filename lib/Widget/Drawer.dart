@@ -21,8 +21,11 @@ class _DrawerPageState extends State<DrawerPage> {
     final user = FirebaseAuth.instance.currentUser;
     return Drawer(
         child: Container(
+
+            // color: Colors.blue,
             width: MediaQuery.of(context).size.width,
             child: ListView(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
               children: [
                 Container(
                     height: 70,
@@ -94,7 +97,6 @@ class _DrawerPageState extends State<DrawerPage> {
                   onTap: () {},
                   title: Text("Guide"),
                 ),
-                ListTile(onTap: () {}, title: Text("CRUD")),
 
                 ListTile(
                   onTap: () {

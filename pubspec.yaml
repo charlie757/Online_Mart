@@ -31,21 +31,22 @@ dependencies:
   shimmer: ^2.0.0
 
   # for Authenication
-  firebase_core:
+  firebase_core: 
   firebase_auth: ^3.0.1
-  google_sign_in: ^5.0.5
+  google_sign_in: ^5.0.7
   shared_preferences: ^2.0.6
   otp_text_field: ^1.1.1
   
   cloud_firestore: 
   # firebase_database: ^7.1.2
 
-  # firebase_storage:
-  file_picker: ^3.0.4
 
   #for Google Icon
   font_awesome_flutter: ^9.1.0
   carousel_slider: ^4.0.0
+  # firebase_storage: ^10.0.1
+  # file_picker: ^3.0.4
+  image_picker: ^0.8.3
 
 
   # state Management
@@ -55,6 +56,10 @@ dependencies:
   internet_connection_checker: ^0.0.1+2
   number_inc_dec: ^0.7.0
   expandable: ^5.0.1
+  dotted_line: ^3.0.0
+
+  # //Location
+  geolocator: ^7.4.0
 
 
 

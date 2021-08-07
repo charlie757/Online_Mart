@@ -26,3 +26,4 @@ const grey5 = Color(0xffcac6cc);
 const lightgrey = Color(0xffb6b6b6);
 const orange = Color(0xffdc9539);
 const green = Color(0xff04be04);
+const lightblack = Color(0xfff5eeed);
